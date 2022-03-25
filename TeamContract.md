@@ -17,4 +17,4 @@
 
 ### Signatures
 
-Akshay Ghosh (aaghosh2), Jeewon Koo (jeewonk2)
+Akshay Ghosh (aaghosh2), Jeewon Koo (jeewonk2), Nicholas Phillips (nwp2)
