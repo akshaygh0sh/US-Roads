@@ -1,23 +1,20 @@
-### Communication
+# Team Contract
 
-* The primary form of communication for our group will be through text or Discord. We expect that any concerns voiced through any of these channels will be addressed as soon as possible (provided the question was asked at a decent time (9:00 a.m. - 11 p.m.))
+## Communication
+1. **Team Meetings** We are going to plan on meeting once a week. Meeting is expected to last around an hour. However, in necessary, meeting can last up to 3 hours max per day. As long as we have meetings once a week, meeting time/location will be flexible based on each person’s availability and progress. If it is in-person meeting, the meeting place would be Grainger Library. If it is online, we will use zoom. While meeting once a week is mandatory, we all agree that we might have extra meeting based on workflow. During meetings, we will review pull requests and merge them, compile work, share our progress and discuss any new developments. Then we will also draft DEVELOPMENT LOG entry. Each member will rotate being the designated note-taker, starting with jeewonk2. Any meeting notes will be shared via Discord. 
 
-* It is expected that each group member respond in a timely fashion (within 3-5 hours) to any comment regarding them, or at least make a note that they will get back to the issue/error that they were mentioned in
+2. **Assistance** We are going to use Discord as our main communication method. We have used Discord so far but will make a new server in order to communicate with our mentor if necessary. We expect that any concerns voiced through any of these channels will be addressed as soon as possible during this time frame (9:00 a.m. - 11 p.m.). Outside of emergencies or other commitments, we commit to responding to text or Discord channel within 48 hours. It is expected that each group member respond in a timely fashion (within 3-5 hours) to any comment regarding them, or at least make a note that they will get back to the issue/error that they were mentioned in. If member cannot make it to meeting due to personal emergency, member is expected to nofity other team members on Discord at least 24 hours before meeting in order to reschedule. 
 
-* We will treat each other with respect and check in with other group members during work allocation/assignment to see if they have any issues with the task they were assigned or have any broad concerns with what they have to do
+3. **Respect** We will treat each other with respect and check in with other group members during work allocation/assignment to see if they have any issues with the task they were assigned or have any broad concerns with what they have to do. To make sure that every member has an opportunity to speak, listen, and engeage with the thuoghts of others, we are not planning assign specific role to each member other than note-taker. Rather, all members are expected to actively participate meeting and finish task. 
 
-### Collaboration 
+## Collaboration
 
-* As for the work during the final project itself, we will have a much better idea as to what the individual workload will look like once we actually get started on the project itself, but we will always check in with each other before finalizing the work assignments
+1. **Work Distribution** We are planning to split into smaller groups to work on specific implementation. We will split test groups based on each person’s strengths and interests. Our current plan is to divide tasks based on functionality. As for the work during the final project itself, we will have a much better idea as to what the individual workload will look like once we actually get started on the project itself, but we will always check in with each other before finalizing the work assignments. It is also encouraged that if anyone has an issue with their work assignment or thinks that they may not be able to finish their portion of the work in time that communicate this to the rest of the group. 
 
-* It is also encouraged that if anyone has an issue with their work assignment or thinks that they may not be able to finish their portion of the work in time that communicate this to the rest of the group
+2. **Time Commitment** To ensure an equal distribution of work, each member is expected to independently work no less than two and no more than six hours per week on the project. It is also encouraged that if anyone has an issue with their work assignment or thinks that they may not be able to finish their portion of the work in time that communicate this to the rest of the group. As we work through the project, we expect to have rough deadlines that act as informal checkpoints; it is expected that these deadlines are met, but if we realize that a specific component of the project will take much more time than expected, then we can adjust these or (preferably not) fail to meet these deadlines. 
 
-* As we work through the project, we expect to have rough deadlines that act as informal checkpoints; it is expected that these deadlines are met, but if we realize that a specific component of the project will take much more time than expected, then we can adjust these or (preferably not) fail to meet these deadlines
-
-### Conflict Resolution
-
-* If any conflicts/disagreements arise during our development of our final project, we will try to hold a group meeting to address these concerns. We are all mature and are sure we can make compromises to resolve any potential disagreements
+3. **Conflict Resolution** If any conflicts/disagreements arise during our development of our final project, we will try to hold a group meeting to address these concerns. We are all mature and are sure we can make compromises to resolve any potential disagreements. Most of the issues are expected to be resolved at this stage. Otherwise, we will reach out to a mentor to ask for help or advice.
 
 ### Signatures
 
-Akshay Ghosh (aaghosh2)
+Akshay Ghosh (aaghosh2), Jeewon Koo (jeewonk2), Nicholas Phillips (nwp2)
