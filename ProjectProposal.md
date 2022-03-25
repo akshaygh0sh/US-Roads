@@ -52,9 +52,9 @@ Since this dataset is quite large and contains a lot of nodes and edges, we will
 ## Timeline
 We have already downloaded the target datasets and uploaded them to the github repository inside a folder named data. 
 
-Tasks:
-	Task 1 (4/2/2022): Parse the dataset into an adjacency list
-	Task 2 (4/9/2022): Implement the shortest path algorithm
-Task 3 (4/20/2022): Implement the approximate traveling salesman algorithm
-	Task 4 (4/30/2022): Create some sort of visualization for shortest path / traveling salesman
-	Task 5 (5/4/2022): Finish the project presentation
+Tasks:<br>
+	Task 1 (4/2/2022): Parse the dataset into an adjacency list<br>
+	Task 2 (4/9/2022): Implement the shortest path algorithm<br>
+	Task 3 (4/20/2022): Implement the approximate traveling salesman algorithm<br>
+	Task 4 (4/30/2022): Create some sort of visualization for shortest path / traveling salesman<br>
+	Task 5 (5/4/2022): Finish the project presentation<br>
