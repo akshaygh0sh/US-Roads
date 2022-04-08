@@ -1,0 +1,3 @@
+# Satisfactory 
+
+Looks quite solid! I'm wondering if you can use a graph with a set instead of vertices for O(1) vs O(n) neighbour checking.
