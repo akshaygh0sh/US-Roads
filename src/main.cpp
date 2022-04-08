@@ -15,4 +15,10 @@ int main() {
   auto length = edges.GetColumn<double>(3);
 
   RoadGraph graph{x_coords, y_coords, from, to, length};
+
+
+  auto path = graph.shortestPath(0, 3).value();
+  for(auto i : path){
+    std::cout << i << ',';
+  }
 }
