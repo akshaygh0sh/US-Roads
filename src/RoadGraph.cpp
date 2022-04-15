@@ -1,6 +1,8 @@
 #include "RoadGraph.h"
 #include<limits>
 #include<algorithm>
+#include<chrono>
+#include<iostream>
 #include<string_view>
 
 RoadGraph::RoadGraph(const std::vector<double> &x_coords,
@@ -49,7 +51,7 @@ std::optional<std::pair<std::vector<size_t>, double>> RoadGraph::shortestPath(si
 
     
     for(auto const& e : nodes[index].edges){
-      if(distances[e.end] > distance + e.length){
+      if(!visited[e.end] && distances[e.end] > distance + e.length){
         distances[e.end] = distance + e.length;
         pq.push({distance + e.length, e.end});
         paths[e.end] = index;
@@ -84,18 +86,17 @@ std::optional<std::pair<std::vector<size_t>, double>> RoadGraph::shortestSalesma
   };
   std::unordered_map<std::pair<size_t, size_t>, std::pair<std::vector<size_t>, double>, decltype(hash)> path_cache{nodes.size()*nodes.size(), hash};
 
-  for(auto i : nodes){
-    for(auto j : nodes){
-      if(i != j){
-        auto path = shortestPath(i, j);
-        if(!path.has_value()) return std::nullopt;
-        path_cache[{i, j}] = std::move(*path);
-      }
+  for(auto i = nodes.begin(); i != nodes.end(); i++){
+    for(auto j = i + 1; j != nodes.end(); j++){
+      auto path = shortestPath(*i, *j);
+      if(!path.has_value()) return std::nullopt;
+      path_cache[{*i, *j}] = *path;
+      std::reverse(path->first.begin(), path->first.end());
+      path_cache[{*j, *i}] = *path;
     }
   }
 
   do {
-
     std::vector<size_t> current_path = {node_order[0]};
     double current_distance = 0;
 
@@ -104,9 +105,8 @@ std::optional<std::pair<std::vector<size_t>, double>> RoadGraph::shortestSalesma
       size_t node2 = node_order[i+1];
 
       const auto& path = path_cache.at({node1, node2});
-
-      current_distance += path.second;
       current_path.insert(current_path.end(), path.first.begin() + 1, path.first.end());
+      current_distance += path.second;
     }
 
     if(current_distance < best.second){
@@ -115,6 +115,5 @@ std::optional<std::pair<std::vector<size_t>, double>> RoadGraph::shortestSalesma
 
     std::next_permutation(node_order.begin(), node_order.end());
   } while(node_order != nodes);
-
   return best;
 }
