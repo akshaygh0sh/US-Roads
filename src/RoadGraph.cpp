@@ -4,6 +4,7 @@
 #include<chrono>
 #include<iostream>
 #include<string_view>
+#include<unordered_map>
 
 RoadGraph::RoadGraph(const std::vector<double> &x_coords,
                      const std::vector<double> &y_coords,
