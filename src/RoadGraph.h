@@ -11,8 +11,9 @@ public:
             const std::vector<size_t> &edge_ends,
             const std::vector<double> &edge_distances);
 
-  std::optional<std::vector<size_t>> shortestPath(size_t start, size_t end);
-
+  std::optional<std::pair<std::vector<size_t>, double>> shortestPath(size_t start, size_t end);
+  std::optional<std::pair<std::vector<size_t>, double>> shortestSalesman(const std::vector<size_t>& nodes);
+ 
 private:
   struct Edge {
     size_t end;
