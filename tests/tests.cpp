@@ -50,8 +50,8 @@ TEST_CASE("Shortest Travelling Salesman Simple", "[shortestSalesman]") {
 
   RoadGraph graph{x_coords, y_coords, from, to, length};
   auto salesman_17_12_15_19 = graph.shortestSalesman({17, 12, 15, 19}).value();
-  std::vector<size_t> actual_path_17_12_15_19 {17, 8, 13, 12, 4, 15, 7, 1, 19};
+  std::vector<size_t> actual_path_17_12_15_19 {17, 2, 19, 1, 7, 15, 4, 12};
 
   REQUIRE(salesman_17_12_15_19.first == actual_path_17_12_15_19);
-  REQUIRE(salesman_17_12_15_19.second == 100.1);
+  REQUIRE(salesman_17_12_15_19.second == 54.2415);
 }
