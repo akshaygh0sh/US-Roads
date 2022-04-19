@@ -1,7 +1,9 @@
-#include "RoadGraph.h"
-#include <iostream>
 #include <rapidcsv.h>
+
 #include <chrono>
+#include <iostream>
+
+#include "RoadGraph.h"
 
 int main() {
   rapidcsv::Document nodes("data/NA.cnode.txt", rapidcsv::LabelParams(-1, -1),
@@ -17,10 +19,11 @@ int main() {
 
   RoadGraph graph{x_coords, y_coords, from, to, length};
 
-  auto path = graph.shortestSalesman({0, 1, 2, 3, 170000, 65000, 35000, 70000}).value();
+  auto path =
+      graph.shortestSalesman({0, 1, 2, 3, 170000, 65000, 35000, 70000}).value();
 
   std::cout << "distance: " << path.second << '\n';
-  for(auto i : path.first){
+  for (auto i : path.first) {
     std::cout << i << ',';
   }
 }
