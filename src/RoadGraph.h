@@ -2,6 +2,7 @@
 #include <cassert>
 #include <optional>
 #include <queue>
+#include <cmath>
 #include <vector>
 
 class RoadGraph {
@@ -14,9 +15,20 @@ class RoadGraph {
 
   std::optional<std::pair<std::vector<size_t>, double>> shortestPath(
       size_t start, size_t end);
+  std::optional<std::pair<std::vector<size_t>, double>> shortestPathAStar(
+      size_t start, size_t end);
   std::optional<std::pair<std::vector<size_t>, double>> shortestSalesman(
       const std::vector<size_t> &nodes);
 
+  std::optional<std::pair<std::vector<size_t>, double>> shortestSalesmanAStar(
+      const std::vector<size_t> &nodes);
+
+
+  double distance(size_t n1, size_t n2){
+    auto dx = nodes[n1].x - nodes[n2].x;
+    auto dy = nodes[n1].y - nodes[n2].y;
+    return std::sqrt(dx*dx + dy*dy);
+  }
  private:
   struct Edge {
     size_t end;

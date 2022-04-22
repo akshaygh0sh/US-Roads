@@ -33,11 +33,67 @@ RoadGraph::RoadGraph(const std::vector<double> &x_coords,
   }
 }
 
+
+std::optional<std::pair<std::vector<size_t>, double>> RoadGraph::shortestPathAStar(
+      size_t start, size_t end){
+  auto cmp = [&](const std::pair<double, size_t>& a, const std::pair<double, size_t>& b){
+    auto da = distance(a.second, end);
+    auto db = distance(b.second, end);
+
+    return da + a.first > db + b.first;
+  };
+
+  std::priority_queue<std::pair<double, size_t>,
+                      std::vector<std::pair<double, size_t>>, decltype(cmp)> pq{cmp};
+
+  std::vector<bool> visited(nodes.size(), false);
+  std::vector<double> distances(nodes.size(),
+                                std::numeric_limits<double>::infinity());
+  std::vector<size_t> paths(nodes.size(), 0);
+
+  pq.push({0.0, start});
+
+  while (!pq.empty()) {
+    auto [dist, index] = pq.top();
+    pq.pop();
+
+    if (distance(index, end) + dist > distances[end]) break;
+
+    if (visited[index]) continue;
+    visited[index] = true;
+
+    for (auto const &e : nodes[index].edges) {
+      if (!visited[e.end] && distances[e.end] > dist + e.length) {
+        distances[e.end] = dist + e.length;
+        pq.push({dist + e.length, e.end});
+        paths[e.end] = index;
+      }
+    }
+  }
+
+  if (distances[end] == std::numeric_limits<double>::infinity()) {
+    return std::nullopt;
+  }
+  std::vector<size_t> path;
+
+  for (size_t i = end; i != start; i = paths[i]) {
+    path.push_back(i);
+  }
+  path.push_back(start);
+  std::reverse(path.begin(), path.end());
+  return {{path, distances[end]}};
+}
+
+
 std::optional<std::pair<std::vector<size_t>, double>> RoadGraph::shortestPath(
     size_t start, size_t end) {
+
+  
+
+  
+
   std::priority_queue<std::pair<double, size_t>,
-                      std::vector<std::pair<double, size_t>>, std::greater<>>
-      pq{};
+                      std::vector<std::pair<double, size_t>>, std::greater<>> pq{};
   std::vector<bool> visited(nodes.size(), false);
   std::vector<double> distances(nodes.size(),
                                 std::numeric_limits<double>::infinity());
@@ -93,6 +149,54 @@ RoadGraph::shortestSalesman(const std::vector<size_t> &nodes) {
   for (auto i = nodes.begin(); i != nodes.end(); i++) {
     for (auto j = i + 1; j != nodes.end(); j++) {
       auto path = shortestPath(*i, *j);
+      if (!path.has_value()) return std::nullopt;
+      path_cache[{*i, *j}] = *path;
+      std::reverse(path->first.begin(), path->first.end());
+      path_cache[{*j, *i}] = *path;
+    }
+  }
+
+  do {
+    std::vector<size_t> current_path = {node_order[0]};
+    double current_distance = 0;
+
+    for (size_t i = 0; i < node_order.size() - 1; i++) {
+      size_t node1 = node_order[i];
+      size_t node2 = node_order[i + 1];
+
+      const auto &path = path_cache.at({node1, node2});
+      current_path.insert(current_path.end(), path.first.begin() + 1,
+                          path.first.end());
+      current_distance += path.second;
+    }
+
+    if (current_distance < best.second) {
+      best = {current_path, current_distance};
+    }
+
+    std::next_permutation(node_order.begin(), node_order.end());
+  } while (node_order != nodes);
+  return best;
+}
+
+std::optional<std::pair<std::vector<size_t>, double>>
+RoadGraph::shortestSalesmanAStar(const std::vector<size_t> &nodes) {
+  auto node_order = nodes;
+
+  std::pair<std::vector<size_t>, double> best = {
+      {}, std::numeric_limits<double>::infinity()};
+
+  auto hash = [](std::pair<size_t, size_t> a) {
+    size_t mem[] = {a.first, a.second};
+    return std::hash<std::string_view>()({(char *)mem, 8});
+  };
+  std::unordered_map<std::pair<size_t, size_t>,
+                     std::pair<std::vector<size_t>, double>, decltype(hash)>
+      path_cache{nodes.size() * nodes.size(), hash};
+
+  for (auto i = nodes.begin(); i != nodes.end(); i++) {
+    for (auto j = i + 1; j != nodes.end(); j++) {
+      auto path = shortestPathAStar(*i, *j);
       if (!path.has_value()) return std::nullopt;
       path_cache[{*i, *j}] = *path;
       std::reverse(path->first.begin(), path->first.end());
