@@ -230,7 +230,7 @@ RoadGraph::shortestSalesmanAStar(const std::vector<size_t> &nodes) {
 
   for(size_t i = 0; i < best_node_order.size() - 1; i++){
     auto path = path_cache.at({best_node_order[i], best_node_order[i+1]}).first;
-    best_path.insert(best_path.end(), path.begin(), path.end());
+    best_path.insert(best_path.end(), path.begin() + 1, path.end());
   }
   return {{best_path, best.second}};
 }
