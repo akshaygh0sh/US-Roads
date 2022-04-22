@@ -26,7 +26,7 @@ int main() {
 
   
   auto path =
-      graph.shortestSalesmanAStar({0, 1, 2, 3, 170000, 65000, 35000, 70000, 85, 30, 20000}).value();
+      graph.shortestSalesman({0, 1, 2, 3, 170000, 65000, 35000, 70000, 85, 30, 20000}).value();
 
   std::cout << "distance: " << path.second << '\n';
   for (auto i : path.first) {

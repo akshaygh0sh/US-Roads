@@ -34,7 +34,7 @@ RoadGraph::RoadGraph(const std::vector<double> &x_coords,
 }
 
 
-std::optional<std::pair<std::vector<size_t>, double>> RoadGraph::shortestPathAStar(
+std::optional<std::pair<std::vector<size_t>, double>> RoadGraph::shortestPath(
       size_t start, size_t end){
 
   auto cmp = [&](const std::pair<double, size_t>& a, const std::pair<double, size_t>& b){
@@ -83,7 +83,7 @@ std::optional<std::pair<std::vector<size_t>, double>> RoadGraph::shortestPathASt
 }
 
 
-std::optional<std::pair<std::vector<size_t>, double>> RoadGraph::shortestPath(
+std::optional<std::pair<std::vector<size_t>, double>> RoadGraph::shortestPathDijkstra(
     size_t start, size_t end) {
 
   
@@ -130,7 +130,7 @@ std::optional<std::pair<std::vector<size_t>, double>> RoadGraph::shortestPath(
 }
 
 std::optional<std::pair<std::vector<size_t>, double>>
-RoadGraph::shortestSalesman(const std::vector<size_t> &nodes) {
+RoadGraph::shortestSalesmanDijkstra(const std::vector<size_t> &nodes) {
   auto node_order = nodes;
 
   std::pair<std::vector<size_t>, double> best = {
@@ -146,7 +146,7 @@ RoadGraph::shortestSalesman(const std::vector<size_t> &nodes) {
 
   for (auto i = nodes.begin(); i != nodes.end(); i++) {
     for (auto j = i + 1; j != nodes.end(); j++) {
-      auto path = shortestPath(*i, *j);
+      auto path = shortestPathDijkstra(*i, *j);
       if (!path.has_value()) return std::nullopt;
       path_cache[{*i, *j}] = *path;
       std::reverse(path->first.begin(), path->first.end());
@@ -196,7 +196,7 @@ RoadGraph::shortestSalesmanAStar(const std::vector<size_t> &nodes) {
 
   for (auto i = nodes.begin(); i != nodes.end(); i++) {
     for (auto j = i + 1; j != nodes.end(); j++) {
-      auto path = shortestPathAStar(*i, *j);
+      auto path = shortestPath(*i, *j);
       if (!path.has_value()) return std::nullopt;
       path_cache[{*i, *j}] = *path;
       std::reverse(path->first.begin(), path->first.end());

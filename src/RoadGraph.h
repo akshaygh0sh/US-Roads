@@ -13,11 +13,11 @@ class RoadGraph {
             const std::vector<size_t> &edge_ends,
             const std::vector<double> &edge_distances);
 
+  std::optional<std::pair<std::vector<size_t>, double>> shortestPathDijkstra(
+      size_t start, size_t end);
   std::optional<std::pair<std::vector<size_t>, double>> shortestPath(
       size_t start, size_t end);
-  std::optional<std::pair<std::vector<size_t>, double>> shortestPathAStar(
-      size_t start, size_t end);
-  std::optional<std::pair<std::vector<size_t>, double>> shortestSalesman(
+  std::optional<std::pair<std::vector<size_t>, double>> shortestSalesmanDijkstra(
       const std::vector<size_t> &nodes);
 
   std::optional<std::pair<std::vector<size_t>, double>> shortestSalesmanAStar(
