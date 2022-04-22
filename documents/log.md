@@ -3,7 +3,10 @@ Week 1: Our primary goal was reading csv file and constuct graph. We were able t
 
 Week 2: Our goal is to find shortest path between two nodes using Dijkstra's algorithm. To be honest, everything went smoothly. Since we are farmiliar with Dijkstra's algorithm, we were able to accomplish successfully. When we run it, we get expected output.
 
-Week 3 Goal: Our goal was to implement the approximate traveling salesman algorithm. We went ahead and implemented the travelling salesman by finding the shortest path between each node in our vector of nodes to compute the travelling salesman path between. Then, we found each permutation of the salesman path and returned the optimal path between each vertices. 
+Week 3: Our goal was to implement the approximate traveling salesman algorithm. We went ahead and implemented the travelling salesman by finding the shortest path between each node in our vector of nodes to compute the travelling salesman path between. Then, we found each permutation of the salesman path and returned the optimal path between each vertices. 
+
+Week 4: Our goal was to implement A* algorithm and to add test cases for Djikstra, Salesment, and A* algorithms. We were able to successfully accomplished implementing plenty of test cases. We also checked that all test cases passed. 
+
 
 ## What specific tasks each member of your team accomplished in the week
 
@@ -13,6 +16,8 @@ Week 2: Similiar to last week, this week workload is pretty light and there was 
 
 Week 3: Every week, we work together at Grainger and code what we need to get done collaboratively on someone's computer. This week, we all worked together to implement the travelling salesman algorithm.
 
+Week 4: Nick and Akshay implemented A* algorithm and test cases for comparing time efficienty between Djikstra and A* algorithms. Jeewon implemented test casees for comparing if Djikstra and A* algorithm returns the same output.
+
 ## What problems you encountered (if any) that prevented you from meeting your goals
 
 Week 1: We encountered problem when we tried to download some packages for reading data in as csv file. The problem was cmake package was too old. However, we solved this problem by using docker container. 
@@ -21,6 +26,8 @@ Week 2: The only problems we had were with a merge conflict because we failed to
 
 Week 3: We realized that our current implementation of the shortest path could be (potentially) a lot more efficient if we used A* search instead of Dijkstra's since we could use the Euclidean distance between two nodes as the heuristic for the search. This is much better than Dijkstra's since we smartly explore nodes that are physically closer as opposed to arbitrary neighbors of the current node in Dijkstra's. 
 
+Week 4: Coordinates approximation for constructing Graph was not accurate. Because of this A* returns inaccurate outputs. We solved this problem using actual dataset since the coordinates are accurate. 
+
 ## What you plan to accomplish next week
 
 Week 2 Goal: Find shortest path between two nodes using travsal.
@@ -28,3 +35,5 @@ Week 2 Goal: Find shortest path between two nodes using travsal.
 Week 3 Goal: Implement the approximate traveling salesman algorithm
 
 Week 4 Goal: Implement A* search to (hopefully) greatly improve the run time of our shortest path algorithm and if we have enough time, get started or finish the visualization of our shortest path algorithms. 
+
+Week 5 Goal: Finalize existing algorithms and do visualization for graph. 
