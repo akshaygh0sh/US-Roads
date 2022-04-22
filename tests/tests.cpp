@@ -1,4 +1,5 @@
 #define CATCH_CONFIG_MAIN
+#define CATCH_CONFIG_ENABLE_BENCHMARKING
 #include <rapidcsv.h>
 
 #include "../src/RoadGraph.h"
@@ -47,4 +48,52 @@ TEST_CASE("Shortest Travelling Salesman Simple", "[shortestSalesman]") {
   
   REQUIRE(salesman_17_12_15_19.first == actual_path_17_12_15_19);
   REQUIRE(salesman_17_12_15_19.second == 54.2415);
+}
+
+TEST_CASE("Large set dijkstra = astar shortest", "[shortestAStar]") {
+  auto graph = load_graph("data/NA.cnode.txt", "data/NA.cedge.txt");
+
+  auto shortest_djikstra1 = graph.shortestPath(0, 2).value();
+  auto shortest_astar1 = graph.shortestPathAStar(0, 2).value();
+
+  REQUIRE(shortest_djikstra1 == shortest_astar1);
+
+  
+  auto shortest_djikstra2 = graph.shortestPath(0, 10000).value();
+  auto shortest_astar2 = graph.shortestPathAStar(0, 10000).value();
+
+  REQUIRE(shortest_djikstra2 == shortest_astar2);
+
+  auto shortest_djikstra3 = graph.shortestPath(4000, 15000).value();
+  auto shortest_astar3 = graph.shortestPathAStar(4000, 15000).value();
+
+  REQUIRE(shortest_djikstra3 == shortest_astar3);
+}
+
+TEST_CASE("AStar prefomrance", "[APerf]") {
+  auto graph = load_graph("data/NA.cnode.txt", "data/NA.cedge.txt");
+
+  BENCHMARK("Dijkstra small"){
+    return graph.shortestPath(0, 10);
+  };
+
+  BENCHMARK("AStar small"){
+    return graph.shortestPathAStar(0, 10);
+  };
+
+  BENCHMARK("Dijkstra big"){
+    return graph.shortestPath(1000, 50000);
+  };
+
+  BENCHMARK("AStar big"){
+    return graph.shortestPathAStar(1000, 50000);
+  };
+
+  BENCHMARK("Dijkstra salesman"){
+    return graph.shortestSalesman({0,1,1000,10000, 150, 50000});
+  };
+
+  BENCHMARK("AStar salesman"){
+    return graph.shortestSalesmanAStar({0,1,1000,10000, 150, 50000});
+  };
 }

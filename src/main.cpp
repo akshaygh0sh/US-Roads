@@ -19,8 +19,14 @@ int main() {
 
   RoadGraph graph{x_coords, y_coords, from, to, length};
 
+
+
+  
+  
+
+  
   auto path =
-      graph.shortestSalesman({0, 1, 2, 3, 170000, 65000, 35000, 70000}).value();
+      graph.shortestSalesmanAStar({0, 1, 2, 3, 170000, 65000, 35000, 70000, 85}).value();
 
   std::cout << "distance: " << path.second << '\n';
   for (auto i : path.first) {
