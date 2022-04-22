@@ -5,7 +5,7 @@ Week 2: Our goal is to find shortest path between two nodes using Dijkstra's alg
 
 Week 3: Our goal was to implement the approximate traveling salesman algorithm. We went ahead and implemented the travelling salesman by finding the shortest path between each node in our vector of nodes to compute the travelling salesman path between. Then, we found each permutation of the salesman path and returned the optimal path between each vertices. 
 
-Week 4: Our goal was to implement A* algorithm and to add test cases for Djikstra, Salesment, and A* algorithms. We were able to successfully accomplished implementing plenty of test cases. We also checked that all test cases passed. 
+Week 4: Our goal was to implement A* algorithm and to add test cases for Djikstra, Salesment, and A* algorithms. We were able to successfully accomplished implementing plenty of test cases. We also checked that all test cases passed and A* algorithm is 50% faster than Djikstra algorithm.
 
 
 ## What specific tasks each member of your team accomplished in the week
@@ -16,7 +16,7 @@ Week 2: Similiar to last week, this week workload is pretty light and there was 
 
 Week 3: Every week, we work together at Grainger and code what we need to get done collaboratively on someone's computer. This week, we all worked together to implement the travelling salesman algorithm.
 
-Week 4: Nick and Akshay implemented A* algorithm and test cases for comparing time efficienty between Djikstra and A* algorithms. Jeewon implemented test casees for comparing if Djikstra and A* algorithm returns the same output.
+Week 4: Nick and Akshay implemented A* algorithm and test cases for comparing time efficiency between Djikstra and A* algorithms. Jeewon implemented test casees for comparing if Djikstra and A* algorithm returns the same output.
 
 ## What problems you encountered (if any) that prevented you from meeting your goals
 
