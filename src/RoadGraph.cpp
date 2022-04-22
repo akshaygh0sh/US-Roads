@@ -36,11 +36,9 @@ RoadGraph::RoadGraph(const std::vector<double> &x_coords,
 
 std::optional<std::pair<std::vector<size_t>, double>> RoadGraph::shortestPathAStar(
       size_t start, size_t end){
-  auto cmp = [&](const std::pair<double, size_t>& a, const std::pair<double, size_t>& b){
-    auto da = distance(a.second, end);
-    auto db = distance(b.second, end);
 
-    return da + a.first > db + b.first;
+  auto cmp = [&](const std::pair<double, size_t>& a, const std::pair<double, size_t>& b){
+    return distance(a.second, end) + a.first > distance(b.second, end) + b.first;
   };
 
   std::priority_queue<std::pair<double, size_t>,
@@ -194,6 +192,8 @@ RoadGraph::shortestSalesmanAStar(const std::vector<size_t> &nodes) {
                      std::pair<std::vector<size_t>, double>, decltype(hash)>
       path_cache{nodes.size() * nodes.size(), hash};
 
+
+
   for (auto i = nodes.begin(); i != nodes.end(); i++) {
     for (auto j = i + 1; j != nodes.end(); j++) {
       auto path = shortestPathAStar(*i, *j);
@@ -204,6 +204,7 @@ RoadGraph::shortestSalesmanAStar(const std::vector<size_t> &nodes) {
     }
   }
 
+
   do {
     std::vector<size_t> current_path = {node_order[0]};
     double current_distance = 0;
@@ -213,16 +214,23 @@ RoadGraph::shortestSalesmanAStar(const std::vector<size_t> &nodes) {
       size_t node2 = node_order[i + 1];
 
       const auto &path = path_cache.at({node1, node2});
-      current_path.insert(current_path.end(), path.first.begin() + 1,
-                          path.first.end());
       current_distance += path.second;
     }
 
     if (current_distance < best.second) {
-      best = {current_path, current_distance};
+      best = {node_order, current_distance};
     }
 
     std::next_permutation(node_order.begin(), node_order.end());
   } while (node_order != nodes);
-  return best;
+
+
+  const auto& best_node_order = best.first;
+  std::vector<std::size_t> best_path{best_node_order[0]};
+
+  for(size_t i = 0; i < best_node_order.size() - 1; i++){
+    auto path = path_cache.at({best_node_order[i], best_node_order[i+1]}).first;
+    best_path.insert(best_path.end(), path.begin(), path.end());
+  }
+  return {{best_path, best.second}};
 }
