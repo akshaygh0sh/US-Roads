@@ -94,7 +94,7 @@ TEST_CASE("AStar prefomrance", "[APerf]") {
   };
 
   BENCHMARK("AStar salesman"){
-    return graph.shortestSalesmanAStar({0,1,1000,10000, 150, 50000});
+    return graph.shortestSalesman({0,1,1000,10000, 150, 50000});
   };
 }
 TEST_CASE("Shortest Path A Star Simple", "[shortestPathAStar]") {
@@ -176,40 +176,40 @@ TEST_CASE("Shortest Travelling Salesman A*", "[shortestSalesman]") {
   std::vector<size_t> path = {17, 12, 15, 19};
   // Path
   REQUIRE(graph.shortestSalesmanDijkstra(path).value().first ==
-          graph.shortestSalesmanAStar(path).value().first);
+          graph.shortestSalesman(path).value().first);
   // Distance of Path
   REQUIRE(graph.shortestSalesmanDijkstra(path).value().second ==
-          graph.shortestSalesmanAStar(path).value().second);
+          graph.shortestSalesman(path).value().second);
 
   path = {1, 3, 5, 7, 9, 11};
   // Path
   REQUIRE(graph.shortestSalesmanDijkstra(path).value().first ==
-          graph.shortestSalesmanAStar(path).value().first);
+          graph.shortestSalesman(path).value().first);
   // Distance of Path
   REQUIRE(graph.shortestSalesmanDijkstra(path).value().second ==
-          graph.shortestSalesmanAStar(path).value().second);
+          graph.shortestSalesman(path).value().second);
 
   path = {2, 4, 6, 8, 10, 12, 14};
   // Path
   REQUIRE(graph.shortestSalesmanDijkstra(path).value().first ==
-          graph.shortestSalesmanAStar(path).value().first);
+          graph.shortestSalesman(path).value().first);
   // Distance of Path
   REQUIRE(graph.shortestSalesmanDijkstra(path).value().second ==
-          graph.shortestSalesmanAStar(path).value().second);
+          graph.shortestSalesman(path).value().second);
   
   path = {1337, 430, 1392, 4389, 32132, 17834, 800};
   // Path
   REQUIRE(graph.shortestSalesmanDijkstra(path).value().first ==
-          graph.shortestSalesmanAStar(path).value().first);
+          graph.shortestSalesman(path).value().first);
   // Distance of Path
   REQUIRE(graph.shortestSalesmanDijkstra(path).value().second ==
-          graph.shortestSalesmanAStar(path).value().second);
+          graph.shortestSalesman(path).value().second);
 
   path = {1337, 430, 1392, 4389, 32132, 17834, 800};
   // Path
   REQUIRE(graph.shortestSalesmanDijkstra(path).value().first ==
-          graph.shortestSalesmanAStar(path).value().first);
+          graph.shortestSalesman(path).value().first);
   // Distance of Path
   REQUIRE(graph.shortestSalesmanDijkstra(path).value().second ==
-          graph.shortestSalesmanAStar(path).value().second);
+          graph.shortestSalesman(path).value().second);
 }

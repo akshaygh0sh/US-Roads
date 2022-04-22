@@ -178,7 +178,7 @@ RoadGraph::shortestSalesmanDijkstra(const std::vector<size_t> &nodes) {
 }
 
 std::optional<std::pair<std::vector<size_t>, double>>
-RoadGraph::shortestSalesmanAStar(const std::vector<size_t> &nodes) {
+RoadGraph::shortestSalesman(const std::vector<size_t> &nodes) {
   auto node_order = nodes;
 
   std::pair<std::vector<size_t>, double> best = {

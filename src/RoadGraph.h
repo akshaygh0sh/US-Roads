@@ -20,7 +20,7 @@ class RoadGraph {
   std::optional<std::pair<std::vector<size_t>, double>> shortestSalesmanDijkstra(
       const std::vector<size_t> &nodes);
 
-  std::optional<std::pair<std::vector<size_t>, double>> shortestSalesmanAStar(
+  std::optional<std::pair<std::vector<size_t>, double>> shortestSalesman(
       const std::vector<size_t> &nodes);
 
 
