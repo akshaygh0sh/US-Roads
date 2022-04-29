@@ -13,6 +13,15 @@ function make_feature(point){
     }
 }
 
+function wasm_cpy(str){
+  const ptr = Module._malloc(str.length + 1);
+  const encoder = new TextEncoder();
+  const encoded = encoder.encode(str);
+  Module.HEAP8.subarray(ptr, ptr + str.length).set(encoded);
+  Module.HEAP8[ptr + str.length] = 0;
+  return ptr;
+}
+
 window.onload = ()=>{
 
     const styles = [
@@ -142,4 +151,19 @@ window.onload = ()=>{
         })
     });
 
+
+    Module.run();
+
+    setTimeout(()=>{
+      road_graph = Module._init(wasm_cpy(nodes), wasm_cpy(edges));
+    }, 100);
+}
+
+function get_path(p1, p2){
+  const shortest_path = Module._path(road_graph, p1, p2);
+  const int_ptr = shortest_path/4;
+  const len = Module.HEAP32[int_ptr];
+  const arr = Module.HEAP32.subarray(int_ptr + 1, int_ptr + 1 + len).slice();
+  Module._delete_arr(shortest_path);
+  return arr;
 }
