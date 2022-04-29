@@ -6,7 +6,7 @@ function make_feature(point){
           'type': 'Polygon',
           'coordinates': [
               [
-                [parseFloat(x) * 400, parseFloat(y) * 400],
+                [parseFloat(x) * 730 - 14435000, parseFloat(y) * 550 + 1725000],
               ],
             ],
         },
@@ -137,8 +137,8 @@ window.onload = ()=>{
             layer
         ],
         view: new ol.View({
-            center: ol.proj.fromLonLat([0, 0]),
-            zoom: 12
+            center: ol.proj.fromLonLat([-75, 40]),
+            zoom: 4
         })
     });
 
