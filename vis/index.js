@@ -1,3 +1,7 @@
+const start_box = document.getElementById("start_node");
+const end_box = document.getElementById("end_node");
+const show_route = document.getElementById("show_route");
+
 function make_feature(point){
     const [id, x, y] = point.split(' ');
     return {
@@ -13,6 +17,39 @@ function make_feature(point){
     }
 }
 
+const styles = [
+  new ol.style.Style({
+    image: new ol.style.Circle({
+      radius: 1,
+      fill: new ol.style.Fill({
+        color: 'orange',
+      }),
+    }),
+    geometry: function (feature) {
+      // return the coordinates of the first ring of the polygon
+      const coordinates = feature.getGeometry().getCoordinates()[0];
+      return new ol.geom.MultiPoint(coordinates);
+    },
+  }),
+];
+
+const styles_highlight = [
+  new ol.style.Style({
+    image: new ol.style.Circle({
+      radius: 5,
+      fill: new ol.style.Fill({
+        color: 'blue',
+      }),
+    }),
+    geometry: function (feature) {
+      // return the coordinates of the first ring of the polygon
+      const coordinates = feature.getGeometry().getCoordinates()[0];
+      return new ol.geom.MultiPoint(coordinates);
+    },
+  }),
+];
+
+
 function wasm_cpy(str){
   const ptr = Module._malloc(str.length + 1);
   const encoder = new TextEncoder();
@@ -22,40 +59,25 @@ function wasm_cpy(str){
   return ptr;
 }
 
+function module_loaded(){
+  console.log("loaded");
+  road_graph = Module._init(wasm_cpy(nodes), wasm_cpy(edges));
+}
+
+show_route.addEventListener("click", ()=>{
+  const path = get_path(parseInt(start_box.value), parseInt(end_box.value));
+  console.log(path);
+  node_features.forEach(f=>{
+    f.setStyle(styles);
+  })
+  path.forEach(i=>{
+    node_features[i].setStyle(styles_highlight);
+  })
+})
+
 window.onload = ()=>{
 
-    const styles = [
-        /* We are using two different styles for the polygons:
-         *  - The first style is for the polygons themselves.
-         *  - The second style is to draw the vertices of the polygons.
-         *    In a custom `geometry` function the vertices of a polygon are
-         *    returned as `MultiPoint` geometry, which will be used to render
-         *    the style.
-         */
-        // new ol.style.Style({
-        //   stroke: new ol.style.Stroke({
-        //     color: 'blue',
-        //     width: 3,
-        //   }),
-        //   fill: new ol.style.Fill({
-        //     color: 'rgba(0, 0, 255, 0.1)',
-        //   }),
-        // }),
-        new ol.style.Style({
-          image: new ol.style.Circle({
-            radius: 5,
-            fill: new ol.style.Fill({
-              color: 'orange',
-            }),
-          }),
-          geometry: function (feature) {
-            // return the coordinates of the first ring of the polygon
-            const coordinates = feature.getGeometry().getCoordinates()[0];
-            return new ol.geom.MultiPoint(coordinates);
-          },
-        }),
-      ];
-
+    
     const geojsonObject = {
         'type': 'FeatureCollection',
         'crs': {
@@ -67,16 +89,18 @@ window.onload = ()=>{
         'features': nodes.split('\n').map(make_feature),
       };
 
+
+    node_features = new ol.format.GeoJSON().readFeatures(geojsonObject);
     const source = new ol.source.Vector({
-    features: new ol.format.GeoJSON().readFeatures(geojsonObject),
+      features: node_features,
     });
     
     const layer = new ol.layer.VectorImage({
-    source: source,
-    style: styles,
+      source: source,
+      style: styles,
     });
 
-    var map = new ol.Map({
+    map = new ol.Map({
         target: 'map',
         layers: [
             new ol.layer.Tile({
@@ -89,13 +113,6 @@ window.onload = ()=>{
             zoom: 4
         })
     });
-
-
-    Module.run();
-
-    setTimeout(()=>{
-      road_graph = Module._init(wasm_cpy(nodes), wasm_cpy(edges));
-    }, 100);
 }
 
 function get_path(p1, p2){
