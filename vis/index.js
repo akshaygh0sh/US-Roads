@@ -6,7 +6,7 @@ function make_feature(point){
           'type': 'Polygon',
           'coordinates': [
               [
-                [parseFloat(x) * 400, parseFloat(y) * 400],
+                [parseFloat(x) * 730 - 14435000, parseFloat(y) * 550 + 1725000],
               ],
             ],
         },
@@ -65,67 +65,6 @@ window.onload = ()=>{
           },
         },
         'features': nodes.split('\n').map(make_feature),
-        // 'features': [
-        //   {
-        //     'type': 'Feature',
-        //     'geometry': {
-        //       'type': 'Polygon',
-        //       'coordinates': [
-        //           [
-        //           [-5e6, 6e6],
-        //           [-5e6, 8e6],
-        //           [-3e6, 8e6],
-        //           [-3e6, 6e6],
-        //           [-5e6, 6e6],
-        //           ],
-        //         ],
-        //     },
-        //   },
-        //   {
-        //     'type': 'Feature',
-        //     'geometry': {
-        //       'type': 'Polygon',
-        //       'coordinates': [
-        //         [
-        //           [-2e6, 6e6],
-        //           [-2e6, 8e6],
-        //           [0, 8e6],
-        //           [0, 6e6],
-        //           [-2e6, 6e6],
-        //         ],
-        //       ],
-        //     },
-        //   },
-        //   {
-        //     'type': 'Feature',
-        //     'geometry': {
-        //       'type': 'Polygon',
-        //       'coordinates': [
-        //         [
-        //           [1e6, 6e6],
-        //           [1e6, 8e6],
-        //           [3e6, 8e6],
-        //           [3e6, 6e6],
-        //           [1e6, 6e6],
-        //         ],
-        //       ],
-        //     },
-        //   },
-        //   {
-        //     'type': 'Feature',
-        //     'geometry': {
-        //       'type': 'Polygon',
-        //       'coordinates': [
-        //         [
-        //           [-2e6, -1e6],
-        //           [-1e6, 1e6],
-        //           [0, -1e6],
-        //           [-2e6, -1e6],
-        //         ],
-        //       ],
-        //     },
-        //   },
-        // ],
       };
 
     const source = new ol.source.Vector({
@@ -146,8 +85,8 @@ window.onload = ()=>{
             layer
         ],
         view: new ol.View({
-            center: ol.proj.fromLonLat([0, 0]),
-            zoom: 12
+            center: ol.proj.fromLonLat([-75, 40]),
+            zoom: 4
         })
     });
 
