@@ -32,7 +32,7 @@ Week 3: We realized that our current implementation of the shortest path could b
 
 Week 4: Coordinates approximation for constructing Graph was not accurate. Because of this A* returns inaccurate outputs. We solved this problem using actual dataset since the coordinates are accurate. 
 
-Week 5: Pretty much everything was smooth but one problem we encountered was loading c++ code into a browser so that it compiles without any problem. 
+Week 5: Pretty much everything was smooth but one problem we encountered was loading c++ code into a browser so that it compiles without any problem. We used a tool called emscripten which was pretty difficult to work with.
 
 ## What you plan to accomplish next week
 
