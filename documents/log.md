@@ -20,7 +20,7 @@ Week 3: Every week, we work together at Grainger and code what we need to get do
 
 Week 4: Nick and Akshay implemented A* algorithm and test cases for comparing time efficiency between Djikstra and A* algorithms. Jeewon implemented test casees for comparing if Djikstra and A* algorithm returns the same output.
 
-Week 5: Same as past few weeks, we work together at Grainger library and code what we need to get done collaboratively on someone's computer. This week, we implemented basic structure of visualization using OpenLayers using Nick's computer. Then, Nick focused on compiling our application on browser, Akshay focused on moving all the points from Africa to America. Jeewon 
+Week 5: Same as past few weeks, we work together at Grainger library and code what we need to get done collaboratively on someone's computer. This week, we implemented basic structure of visualization using OpenLayers using Nick's computer. Then, Nick focused on compiling our application on browser, Akshay focused on moving all the points from Africa to America. Jeewon wrote log.md and fix some fonts on browser.
 
 ## What problems you encountered (if any) that prevented you from meeting your goals
 
@@ -32,7 +32,7 @@ Week 3: We realized that our current implementation of the shortest path could b
 
 Week 4: Coordinates approximation for constructing Graph was not accurate. Because of this A* returns inaccurate outputs. We solved this problem using actual dataset since the coordinates are accurate. 
 
-Week 5: Pretty much everything was smooth but one problem we encountered was loading c++ code into a browser so that it compiles without any problem. We used a tool called emscripten which was pretty difficult to work with.
+Week 5: Problems we encountered were loading c++ code into a browser so that it compiles without any problem. We used a tool called emscripten which was pretty difficult to work with. Also, Jeewon was not able to connect github (cannot add, commit, pull or push anything). I tried several different ways to resolve but couldn't figure it out. Jeewon had to re-clone the whole repo again.
 
 ## What you plan to accomplish next week
 
