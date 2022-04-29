@@ -5,7 +5,9 @@ Week 2: Our goal is to find shortest path between two nodes using Dijkstra's alg
 
 Week 3: Our goal was to implement the approximate traveling salesman algorithm. We went ahead and implemented the travelling salesman by finding the shortest path between each node in our vector of nodes to compute the travelling salesman path between. Then, we found each permutation of the salesman path and returned the optimal path between each vertices. 
 
-Week 4: Our goal was to implement A* algorithm and to add test cases for Djikstra, Salesment, and A* algorithms. We were able to successfully accomplished implementing plenty of test cases. We also checked that all test cases passed and A* algorithm is 50% faster than Djikstra algorithm.
+Week 4: Our goal was to implement A* algorithm and to add test cases for Djikstra, Salesment, and A* algorithms. We successfully were able to successfully accomplished implementing plenty of test cases. We also checked that all test cases passed and A* algorithm is 50% faster than Djikstra algorithm.
+
+Week 5: Our goal for this week was to finalize our project including making visualization of our graph. We successfully were able to acoomplished visualizing grpah using OpenLayers, which is an open-source JavaScript library for displaying map data in web browsers. 
 
 
 ## What specific tasks each member of your team accomplished in the week
@@ -18,6 +20,8 @@ Week 3: Every week, we work together at Grainger and code what we need to get do
 
 Week 4: Nick and Akshay implemented A* algorithm and test cases for comparing time efficiency between Djikstra and A* algorithms. Jeewon implemented test casees for comparing if Djikstra and A* algorithm returns the same output.
 
+Week 5: Same as past few weeks, we work together at Grainger library and code what we need to get done collaboratively on someone's computer. This week, we implemented basic structure of visualization using OpenLayers using Nick's computer. Then, Nick focused on compiling our application on browser, Akshay focused on moving all the points from Africa to America. Jeewon 
+
 ## What problems you encountered (if any) that prevented you from meeting your goals
 
 Week 1: We encountered problem when we tried to download some packages for reading data in as csv file. The problem was cmake package was too old. However, we solved this problem by using docker container. 
@@ -28,6 +32,8 @@ Week 3: We realized that our current implementation of the shortest path could b
 
 Week 4: Coordinates approximation for constructing Graph was not accurate. Because of this A* returns inaccurate outputs. We solved this problem using actual dataset since the coordinates are accurate. 
 
+Week 5: Pretty much everything was smooth but one problem we encountered was loading c++ code into a browser so that it compiles without any problem. 
+
 ## What you plan to accomplish next week
 
 Week 2 Goal: Find shortest path between two nodes using travsal.
@@ -37,3 +43,5 @@ Week 3 Goal: Implement the approximate traveling salesman algorithm
 Week 4 Goal: Implement A* search to (hopefully) greatly improve the run time of our shortest path algorithm and if we have enough time, get started or finish the visualization of our shortest path algorithms. 
 
 Week 5 Goal: Finalize existing algorithms and do visualization for graph. 
+
+Week 6 Goal: Prepare final presentation. 
