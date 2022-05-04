@@ -17,7 +17,7 @@
 - Tests: Locates in [tests](https://github-dev.cs.illinois.edu/hdeep2/whatever-1623-nwp2-jeewonk2-aaghosh2/tree/main/tests) folder
 - Data: Locates in [data](https://github-dev.cs.illinois.edu/hdeep2/whatever-1623-nwp2-jeewonk2-aaghosh2/tree/main/data) folder
 - Development Weekly Log (log.md): Locates in [documents](https://github-dev.cs.illinois.edu/hdeep2/whatever-1623-nwp2-jeewonk2-aaghosh2/tree/main/documents) folder
-- Written Report (results.md): 
+- Written Report (results.md): Locates [here](https://github-dev.cs.illinois.edu/hdeep2/whatever-1623-nwp2-jeewonk2-aaghosh2/blob/main/results.md)
 - Presentation Video: 
 
 
