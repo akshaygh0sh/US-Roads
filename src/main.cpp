@@ -46,6 +46,49 @@ extern "C" EMSCRIPTEN_KEEPALIVE void delete_arr(int * arr){
 
 #else
 
+void cmd_line_path(RoadGraph& graph){
+  std::cout << "point 1 index: ";
+  int p1, p2;
+  std::cin >> p1;
+  std::cout << "point 2 index: ";
+  std::cin >> p2;
+  auto path = graph.shortestPath(p1, p2);
+  if(!path.has_value()){
+    std::cout << "no path between points" << std::endl;
+  } else {
+    std::cout << "Distance: " << path->second << std::endl;
+    std::cout << "nodes: " << std::endl;
+    for(auto i : path->first){
+      std::cout << i << ", ";
+    }
+    std::cout << '\n';
+  }
+}
+
+void cmd_line_salesman(RoadGraph& graph){
+  std::cout << "enter visited node indeces (terminate with -1)" << std::endl;
+
+  std::vector<std::size_t> nodes;
+  while(true){
+    int i;
+    std::cin >> i;
+    if(i == -1) break;
+    nodes.push_back(i);
+  }
+
+  auto path = graph.shortestSalesman(nodes);
+  if(!path.has_value()){
+    std::cout << "no path between points" << std::endl;
+  } else {
+    std::cout << "Distance: " << path->second << std::endl;
+    std::cout << "nodes: " << std::endl;
+    for(auto i : path->first){
+      std::cout << i << ", ";
+    }
+    std::cout << '\n';
+  }
+}
+
 
 int main() {
   rapidcsv::Document nodes("data/NA.cnode.txt", rapidcsv::LabelParams(-1, -1),
@@ -61,6 +104,32 @@ int main() {
 
   RoadGraph graph{x_coords, y_coords, from, to, length};
   
+
+  while(true){
+    std::cout << 
+R"(
+  Pick option
+    1: shortest path
+    2: shortest salesman
+  )";
+
+    int option;
+    std::cin >> option;
+
+    switch(option){
+      case 1:
+        cmd_line_path(graph);
+        break;
+      case 2:
+        cmd_line_salesman(graph);
+        break;
+      default:
+        std::cout << "Invalid option" << std::endl;
+        break;
+    }
+  }
+
+
   auto path =
       graph.shortestSalesman({0, 1, 2, 3, 170000, 65000, 35000, 70000, 85, 30, 20000}).value();
 
