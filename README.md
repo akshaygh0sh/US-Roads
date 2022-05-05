@@ -18,7 +18,7 @@
 - Data: Locates in [data](https://github-dev.cs.illinois.edu/hdeep2/whatever-1623-nwp2-jeewonk2-aaghosh2/tree/main/data) folder
 - Development Weekly Log (log.md): Locates in [documents](https://github-dev.cs.illinois.edu/hdeep2/whatever-1623-nwp2-jeewonk2-aaghosh2/tree/main/documents) folder
 - Written Report (results.md): Locates [here](https://github-dev.cs.illinois.edu/hdeep2/whatever-1623-nwp2-jeewonk2-aaghosh2/blob/main/documents/results.md)
-- Presentation Video: 
+- Presentation Video: Locates [here](https://drive.google.com/file/d/1BGJcbniiKzRWmkzaajew9BuRUCyQTONr/view?usp=sharing)
 
 
 # Compile Instructions for local
