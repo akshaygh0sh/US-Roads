@@ -91,12 +91,29 @@ void cmd_line_salesman(RoadGraph& graph){
 
 
 int main() {
-  rapidcsv::Document nodes("data/NA.cnode.txt", rapidcsv::LabelParams(-1, -1),
+  std::cout << 
+R"(
+Use defualt data location (y/n)
+)";
+
+  std::string file_loc_chooser;
+  std::cin >> file_loc_chooser;
+  std::string node_location = "data/NA.cnode.txt";
+  std::string edge_location = "data/NA.cedge.txt";
+
+  if(!file_loc_chooser.empty() && (file_loc_chooser[0] == 'n' || file_loc_chooser[0] == 'N')){
+    std::cout << "Chose node data location" << std::endl;
+    std::cin >> node_location;
+    std::cout << "Chose edge data location" << std::endl;
+    std::cin >> edge_location;
+  }
+
+  rapidcsv::Document nodes(node_location, rapidcsv::LabelParams(-1, -1),
                            rapidcsv::SeparatorParams(' '));
   auto x_coords = nodes.GetColumn<double>(1);
   auto y_coords = nodes.GetColumn<double>(2);
 
-  rapidcsv::Document edges("data/NA.cedge.txt", rapidcsv::LabelParams(-1, -1),
+  rapidcsv::Document edges(edge_location, rapidcsv::LabelParams(-1, -1),
                            rapidcsv::SeparatorParams(' '));
   auto from = edges.GetColumn<size_t>(1);
   auto to = edges.GetColumn<size_t>(2);
