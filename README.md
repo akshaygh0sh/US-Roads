@@ -33,6 +33,9 @@ cd build
 cmake ..
 make
 ```
+
+run the executable in the project root folder for the default paths to be correct
+
 </div>
 
 # Compile Instructions for Web
