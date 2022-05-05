@@ -23,6 +23,8 @@
 
 # Compile Instructions for local
 
+This project needs a c++ 17 compatible compiler
+
 <div align=center>
 
 <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=Windows&logoColor=white"> <img src="https://img.shields.io/badge/mac%20OS-000000?style=for-the-badge&logo=MacOS&logoColor=white"> 
