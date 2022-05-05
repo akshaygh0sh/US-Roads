@@ -28,6 +28,7 @@
 <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=Windows&logoColor=white"> <img src="https://img.shields.io/badge/mac%20OS-000000?style=for-the-badge&logo=MacOS&logoColor=white"> 
 
 ```
+git submodule update --init --recursive
 mkdir build
 cd build
 cmake ..
